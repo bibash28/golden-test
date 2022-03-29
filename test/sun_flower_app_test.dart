@@ -50,6 +50,7 @@ void main() {
     goldenTest(
       'matches expected output',
       fileName: 'sunflowerPainter',
+      constraints: const BoxConstraints(maxWidth: 600),
       builder: () => GoldenTestGroup(
         columnWidthBuilder: (_) => const FlexColumnWidth(),
         children: [
