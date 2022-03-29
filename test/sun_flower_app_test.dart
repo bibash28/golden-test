@@ -1,3 +1,4 @@
+import 'package:alchemist/alchemist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_test/sun_flower_app.dart';
@@ -44,4 +45,28 @@ void main() {
       });
     },
   );
+
+  group('SunflowerPainter with alchemist', () {
+    goldenTest(
+      'matches expected output',
+      fileName: 'sunflowerPainter',
+      builder: () => GoldenTestGroup(
+        columnWidthBuilder: (_) => const FlexColumnWidth(),
+        children: [
+          GoldenTestScenario(
+            name: 'with 100 seeds',
+            child: buildSubject(100),
+          ),
+          GoldenTestScenario(
+            name: 'with 20 seeds',
+            child: buildSubject(20),
+          ),
+          GoldenTestScenario(
+            name: 'with 3000 seeds',
+            child: buildSubject(3000),
+          ),
+        ],
+      ),
+    );
+  });
 }
